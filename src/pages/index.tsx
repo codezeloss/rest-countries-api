@@ -10,7 +10,7 @@ export default function Home() {
   const [searchedCountry, setSearchedCountry] = useState("");
   const [region, setRegion] = useState("");
   const [code, setCode] = useState("UKR");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   //
   useEffect(() => {
@@ -41,11 +41,6 @@ export default function Home() {
     fetchCountries();
   }, [searchedCountry, region, code]);
 
-  // //
-  // if (loading) {
-  //   return <Loading />;
-  // }
-
   return (
     <>
       <Head>
@@ -63,8 +58,8 @@ export default function Home() {
           setRegion={setRegion}
         />
 
-        <div className="flex gap-16 flex-wrap mx-auto bg-very-light-gray">
-          {loading ? (
+        <div className="bg-very-light-gray grid grid-cols-4 gap-16 1bp:gap-5 2bp:grid-cols-3 3bp:grid-cols-2 mx-auto 5bp:grid-cols-1 justify-items-center">
+          {isLoading ? (
             <Loading />
           ) : (
             data?.map((country: any) => (

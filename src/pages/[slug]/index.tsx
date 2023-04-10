@@ -76,7 +76,7 @@ const Post = () => {
         region={country[0]?.region}
         sub_region={country[0]?.subregion}
         capital={country[0]?.capital}
-        domain={country[0]?.tld}
+        domain={country[0]?.tld.join(" ")}
         currencies={currencies}
         languages={languages}
         border_countries={<BordersCountries borders={borders} />}

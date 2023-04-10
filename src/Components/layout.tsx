@@ -15,8 +15,8 @@ export default function Layout({ children }: any) {
     >
       <Navbar />
 
-      <div className="h-full w-full bg-very-light-gray">
-        <div className="h-full max-w-[1300px] mx-auto px-5 py-12">
+      <div className="w-full bg-very-light-gray">
+        <div className="w-full h-full max-w-[1300px] mx-auto px-5 py-12 4bp:py-8">
           {children}
         </div>
       </div>

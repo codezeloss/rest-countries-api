@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import backIcon from "/public/assets/back-icon.svg";
-import placeholderImage from "../../public/assets/placeholder-img.jpg";
+import placeholderImage from "/public/assets/placeholder-img.jpg";
 
 type Props = {
   img_src: string;
@@ -34,34 +34,37 @@ const CountryDetails = ({
 }: Props) => {
   return (
     <div className="bg-very-light-gray h-fit">
-      <Link href="/">
-        <div className="flex items-center gap-3 mb-20 cursor-pointer">
-          <Image
-            className="w-5 h-5"
-            src={backIcon}
-            alt="Back"
-            width={50}
-            height={50}
-          />
-          <p>Back</p>
-        </div>
+      <Link
+        className="bg-white flex items-center gap-3 mb-20 cursor-pointer px-6 py-2 shadow-md w-fit 4bp:mb-10"
+        href="/"
+      >
+        <Image
+          className="w-4 h-4"
+          src={backIcon}
+          alt="Back"
+          width={40}
+          height={40}
+        />
+        <p className="text-sm">Back</p>
       </Link>
 
-      <div className="flex items-center gap-24">
-        <div className="min-w-[560] w-[560] h-[401px]">
+      <div className="flex items-center gap-24 2bp:gap-10 2bp:flex-col">
+        <div className="w-[560] h-[401px] 2bp:h-auto">
           <Image
-            className="min-w-[560] w-[560] h-[401px] rounded-tr-md rounded-tl-md object-fill"
-            src={!img_src ? placeholderImage : img_src}
+            className="w-[560] h-[401px] 2bp:h-auto rounded-md object-fill"
+            src={img_src ? img_src : placeholderImage}
             alt={img_alt}
             width={560}
             height={401}
           />
         </div>
 
-        <div className="max-w-[800px]">
-          <h2 className="text-3xl mb-6 font-extrabold">{country_name}</h2>
+        <div className="max-w-[500px] text-base 2bp:max-w-[560px] 5bp:text-sm 5bp:w-full">
+          <h2 className="text-3xl mb-6 font-extrabold 5bp:text-2xl">
+            {country_name}
+          </h2>
 
-          <div className="flex mb-16 space-x-20">
+          <div className="flex mb-16 gap-14 2bp:flex-row 2bp:gap-32 2bp:mb-16 4bp:flex-col 4bp:mb-8 4bp:gap-8">
             <div className="flex flex-col gap-1">
               <p>
                 <span className="font-semibold">Native Name: </span>
@@ -101,9 +104,9 @@ const CountryDetails = ({
           </div>
 
           <div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-wrap gap-2 4bp:flex-col">
               <p className="font-semibold">Border Countries: </p>
-              <div className="flex gap-2 flex-wrap">{border_countries}</div>
+              <div className="flex gap-2">{border_countries}</div>
             </div>
           </div>
         </div>

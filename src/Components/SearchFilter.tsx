@@ -20,11 +20,11 @@ const SearchFilter = ({ country, setCountry, region, setRegion }: any) => {
   };
 
   return (
-    <div className="mb-12 flex justify-between">
-      <div className="flex items-center gap-6 bg-white drop-shadow-md py-5 px-8 w-[480px] h-fit rounded-md">
+    <div className="w-full mb-12 flex justify-between 4bp:flex-col 4bp:gap-4 4bp:mb-9">
+      <div className="flex items-center gap-6 bg-white drop-shadow-md py-5 px-8 w-[480px] h-fit rounded-md 3bp:w-[380px] 5bp:w-full">
         <Image src={searchIcon} alt="Search country" width={18} height={18} />
         <input
-          className="w-full outline-none text-sm rounded-md"
+          className="w-full outline-none text-sm rounded-md 4bp:text-xs"
           type="text"
           name="search_country"
           id="search_country"
@@ -36,10 +36,12 @@ const SearchFilter = ({ country, setCountry, region, setRegion }: any) => {
 
       <div>
         <div
-          className="w-[200px] relative flex items-center justify-between mb-1 drop-shadow-md py-5 px-6 bg-white cursor-pointer"
+          className="w-[200px] 4bp:w-[180px] relative flex items-center justify-between mb-1 drop-shadow-md py-5 px-6 bg-white cursor-pointer rounded-md"
           onClick={dropdownHandler}
         >
-          <p className="text-sm">{`${region ? region : "Filter by Region"}`}</p>
+          <p className="text-sm 4bp:text-xs">{`${
+            region ? region : "Filter by Region"
+          }`}</p>
           <Image
             className="w-3 h-3"
             src={arrowBottom}
@@ -50,8 +52,11 @@ const SearchFilter = ({ country, setCountry, region, setRegion }: any) => {
         </div>
         {/* Drop down */}
         {showDropdown && (
-          <div className="w-[200px] absolute z-20">
-            <ul className="w-full drop-shadow-md bg-white rounded-md flex flex-col gap-2 text-sm px-6 py-5" onClick={dropdownHandler}>
+          <div className="w-[200px] 4bp:w-[180px] absolute z-20">
+            <ul
+              className="w-full drop-shadow-md bg-white rounded-md flex flex-col gap-2 text-sm px-6 py-5 4bp:text-xs"
+              onClick={dropdownHandler}
+            >
               <li
                 className="cursor-pointer hover:font-semibold"
                 onClick={() => setRegion("Africa")}
