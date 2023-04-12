@@ -1,22 +1,24 @@
+import { ThemeContext } from "@/pages/_app";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import backIcon from "/public/assets/back-icon.svg";
 import placeholderImage from "/public/assets/placeholder-img.jpg";
 
-type Props = {
-  img_src: string;
-  img_alt: string;
-  country_name: string;
-  native_name: string;
-  population: string;
-  region: string;
-  sub_region: string;
-  capital: any;
-  domain: string;
-  currencies: string;
-  languages: string;
-  border_countries: string;
-};
+// type Props = {
+//   img_src: string;
+//   img_alt: string;
+//   country_name: string;
+//   native_name: string;
+//   population: string;
+//   region: string;
+//   sub_region: string;
+//   capital: any;
+//   domain: string;
+//   currencies: string;
+//   languages: string;
+//   border_countries: string;
+// };
 
 const CountryDetails = ({
   img_src,
@@ -31,11 +33,15 @@ const CountryDetails = ({
   currencies,
   languages,
   border_countries,
-}: Props) => {
+}: any) => {
+  const theme = useContext(ThemeContext);
+
   return (
-    <div className="bg-very-light-gray h-fit">
+    <div className="h-max">
       <Link
-        className="bg-white flex items-center gap-3 mb-20 cursor-pointer px-6 py-2 shadow-md w-fit 4bp:mb-10"
+        className={`flex items-center gap-3 mb-20 cursor-pointer px-6 py-2 shadow-md w-fit 4bp:mb-10 ${
+          theme ? "bg-vdark-blue-dam" : "bg-white"
+        } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
         href="/"
       >
         <Image
@@ -48,7 +54,11 @@ const CountryDetails = ({
         <p className="text-sm">Back</p>
       </Link>
 
-      <div className="flex items-center gap-24 2bp:gap-10 2bp:flex-col">
+      <div
+        className={`flex items-center gap-24 2bp:gap-10 2bp:flex-col ${
+          theme ? "bg-vdark-blue-dam" : "bg-white"
+        } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
+      >
         <div className="w-[560] h-[401px] 2bp:h-auto">
           <Image
             className="w-[560] h-[401px] 2bp:h-auto rounded-md object-fill"

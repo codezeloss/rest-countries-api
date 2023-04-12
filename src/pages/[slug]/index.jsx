@@ -1,11 +1,14 @@
 import CountryDetails from "@/Components/CountryDetails";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "@/Components/Loading";
 import BordersCountries from "@/Components/BordersCountries";
+import { ThemeContext } from "../_app";
 
 const Post = () => {
+  const theme = useContext(ThemeContext);
+
   const router = useRouter();
   const { slug } = router.query;
 
@@ -32,7 +35,7 @@ const Post = () => {
 
       // CUSTOM OUTPUTS
       const nativeName = Object.values(countryData[0]?.name.nativeName).find(
-        (lang: any) => lang
+        (lang) => lang
       );
       setNativeName(nativeName?.common);
 
@@ -40,13 +43,13 @@ const Post = () => {
         countryData[0].currencies !== ""
           ? Object.keys(countryData[0].currencies)
           : "N/A";
-      setCurrencies(currencies.join(", "));
+      setCurrencies(currencies !== "N/A" ? currencies.join(", ") : currencies);
 
       const languages =
         countryData[0].languages !== ""
           ? Object.values(countryData[0].languages)
           : "N/A";
-      setLanguages(languages.join(", "));
+      setLanguages(languages !== "N/A" ? languages.join(", ") : languages);
 
       const borders =
         countryData[0].borders !== "" ? countryData[0]?.borders : "N/A";
@@ -60,11 +63,16 @@ const Post = () => {
 
   //
   if (loading) {
-    return <Loading />;
+    return "<Loading />";
   }
 
+  // @ts-nocheck
   return (
-    <div className="h-full bg-very-light-gray">
+    <div
+      className={`h-full ${theme ? "bg-vdark-blue-dam" : "bg-white"} ${
+        !theme ? "text-vdark-blue-lgm" : "text-white"
+      }`}
+    >
       <CountryDetails
         img_src={country[0]?.flags?.svg}
         img_alt={

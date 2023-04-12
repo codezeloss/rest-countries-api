@@ -1,5 +1,7 @@
+import { ThemeContext } from "@/pages/_app";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import placeholderImage from "/public/assets/placeholder-img.jpg";
 
 type Props = {
@@ -17,9 +19,15 @@ const CountryCard = ({
   region,
   capital,
 }: Props) => {
+  const theme = useContext(ThemeContext);
+
   return (
     <Link className="w-fit" href={`/${name}`}>
-      <div className="w-[267px] bg-white rounded-md drop-shadow-lg">
+      <div
+        className={`w-[267px] rounded-md drop-shadow-lg ${
+          theme ? "bg-dark-blue" : "bg-white"
+        } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
+      >
         <div className="w-[267px] h-[160px] 3bp:w-full rounded-tr-md rounded-tl-md">
           <Image
             className="w-fit h-[160px] object-cover rounded-tr-md rounded-tl-md"
@@ -31,7 +39,9 @@ const CountryCard = ({
         </div>
 
         <div className="px-6 pb-11 pt-6">
-          <h2 className="font-bold text-lg mb-4">{name}</h2>
+          <h2 className="font-bold text-lg mb-4">
+            {name.length > 20 ? name.slice(0, 20) + "..." : name}
+          </h2>
 
           <div className="text-sm">
             <p>

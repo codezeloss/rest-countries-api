@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-  background-color: #fafafa;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .loader {
