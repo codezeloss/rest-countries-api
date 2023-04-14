@@ -11,7 +11,7 @@ const nunito_sans = Nunito_Sans({
 });
 
 //
-export default function Layout({ children, btnClicked }: any) {
+const Layout = ({ children, btnClicked }: any) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -29,4 +29,6 @@ export default function Layout({ children, btnClicked }: any) {
       </div>
     </div>
   );
-}
+};
+
+export default Layout;
