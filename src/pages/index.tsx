@@ -37,8 +37,6 @@ export default function Home() {
         const countriesData = await response.data;
         setData(countriesData);
       }
-
-      // setLoading(false);
     }
 
     fetchCountries();
