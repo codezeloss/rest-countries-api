@@ -2,7 +2,6 @@ import type { AppProps } from "next/app";
 import { createContext, useState } from "react";
 import "@/styles/globals.css";
 import Layout from "@/Components/Layout";
-
 export const ThemeContext = createContext(false);
 
 export default function App({ Component, pageProps }: AppProps) {
