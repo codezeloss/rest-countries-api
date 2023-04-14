@@ -2,7 +2,8 @@ import { ThemeContext } from "@/pages/_app";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import backIcon from "/public/assets/back-icon.svg";
+import backIconDark from "/public/assets/back-icon.svg";
+import backIconWhite from "/public/assets/back-icon-white.svg";
 import placeholderImage from "/public/assets/placeholder-img.jpg";
 
 // type Props = {
@@ -37,16 +38,18 @@ const CountryDetails = ({
   const theme = useContext(ThemeContext);
 
   return (
-    <div className="h-max">
+    <div>
       <Link
-        className={`flex items-center gap-3 mb-20 cursor-pointer px-6 py-2 shadow-md w-fit 4bp:mb-10 ${
-          theme ? "bg-vdark-blue-dam" : "bg-white"
-        } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
+        className={`flex items-center gap-3 mb-20 cursor-pointer pl-8 pr-9 py-2 w-fit 4bp:mb-10 rounded-md ${
+          theme
+            ? "bg-dark-blue text-white shadow-md"
+            : "bg-white text-vdark-blue-lgm"
+        }`}
         href="/"
       >
         <Image
           className="w-4 h-4"
-          src={backIcon}
+          src={theme ? backIconWhite : backIconDark}
           alt="Back"
           width={40}
           height={40}
@@ -55,11 +58,11 @@ const CountryDetails = ({
       </Link>
 
       <div
-        className={`flex items-center gap-24 2bp:gap-10 2bp:flex-col ${
+        className={`h-full flex items-center gap-24 2bp:gap-10 2bp:flex-col ${
           theme ? "bg-vdark-blue-dam" : "bg-white"
         } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
       >
-        <div className="w-[560] h-[401px] 2bp:h-auto">
+        <div className="w-fit h-fit 2bp:h-auto">
           <Image
             className="w-[560] h-[401px] 2bp:h-auto rounded-md object-fill"
             src={img_src ? img_src : placeholderImage}

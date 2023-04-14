@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 // next imports
 import Image from "next/image";
@@ -10,18 +10,11 @@ import { ThemeContext } from "@/pages/_app";
 
 const Navbar = ({ btnClicked }: any) => {
   const theme = useContext(ThemeContext);
-  // const [theme, setTheme] = useState(false);
-
-  // const handleThemeSwitch = () => {
-  //   setTheme((prev) => !prev);
-  // };
 
   return (
     <div
       className={`drop-shadow-md ${
-        theme ? "bg-dark-blue" : "bg-white"
-      } ${
-        !theme ? "text-vdark-blue-lgm" : "text-white"
+        theme ? "bg-dark-blue text-white" : "bg-white text-vdark-blue-lgm"
       }`}
     >
       <div className="max-w-[1290px] mx-auto flex items-center justify-between py-6 px-5">
@@ -31,7 +24,8 @@ const Navbar = ({ btnClicked }: any) => {
           </h1>
         </Link>
 
-        <div
+        <button
+          type="button"
           className="flex items-center gap-1.5 cursor-pointer"
           onClick={btnClicked}
         >
@@ -43,7 +37,7 @@ const Navbar = ({ btnClicked }: any) => {
             height={20}
           />
           <p className="text-base font-semibold 4bp:text-xs">Dark Mode</p>
-        </div>
+        </button>
       </div>
     </div>
   );

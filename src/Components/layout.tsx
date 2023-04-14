@@ -15,16 +15,14 @@ export default function Layout({ children, btnClicked }: any) {
 
   return (
     <div
-      className={`h-full relative ${nunito_sans.className} ${
-        theme ? "bg-vdark-blue-dam" : "bg-white"
-      } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
+      className={`h-[100vh] bottom-0 ${nunito_sans.className} ${
+        theme ? "bg-vdark-blue-dam text-white" : "bg-white text-vdark-blue-lgm"
+      }`}
     >
       <Navbar btnClicked={btnClicked} />
 
       <div
-        className={`h-full w-full ${theme ? "bg-vdark-blue-dam" : "bg-white"} ${
-          !theme ? "text-vdark-blue-lgm" : "text-white"
-        } max-w-[1300px] mx-auto px-5 py-12 4bp:py-8`}
+        className={`h-max w-full max-w-[1300px] mx-auto px-5 py-12 4bp:py-8`}
       >
         {children}
       </div>

@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const toggleTheme = () => {
     setTheme((prev) => !prev);
-    console.log("BTN CLICKED", theme);
   };
 
   return (

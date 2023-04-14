@@ -19,7 +19,7 @@ const Post = () => {
   const [nativeName, setNativeName] = useState("");
   const [borders, setBorders] = useState("");
 
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   //
   useEffect(() => {
@@ -62,15 +62,15 @@ const Post = () => {
   }, [slug]);
 
   //
-  if (loading) {
-    return "<Loading />";
+  if (isLoading) {
+    return <Loading />;
   }
 
   // @ts-nocheck
   return (
     <div
-      className={`h-full ${theme ? "bg-vdark-blue-dam" : "bg-white"} ${
-        !theme ? "text-vdark-blue-lgm" : "text-white"
+      className={`h-full ${
+        theme ? "bg-vdark-blue-dam text-white" : "bg-white text-vdark-blue-lgm"
       }`}
     >
       <CountryDetails

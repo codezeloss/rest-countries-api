@@ -5,10 +5,10 @@ const Loading = () => {
   const theme = useContext(ThemeContext);
 
   return (
-    <div className={`loader absolute mx-auto w-full z-20 left-0 right-0`}>
-      <div className={`outer`}></div>
-      <div className={`middle`}></div>
-      <div className={`inner`}></div>
+    <div className={`loader absolute mx-auto z-20 left-0 right-0 mt-28`}>
+      <div className={`outer ${theme ? "outer-dark" : "outer-light"}`}></div>
+      <div className={`middle ${theme ? "middle-dark" : "middle-light"}`}></div>
+      <div className={`inner ${theme ? "inner-dark" : "inner-light"}`}></div>
     </div>
   );
 };

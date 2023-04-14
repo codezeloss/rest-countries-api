@@ -1,11 +1,14 @@
 import Head from "next/head";
 import SearchFilter from "@/Components/SearchFilter";
 import CountryCard from "@/Components/CountryCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "@/Components/Loading";
+import { ThemeContext } from "./_app";
 
 export default function Home() {
+  const theme = useContext(ThemeContext);
+
   const [data, setData] = useState([]);
   const [searchedCountry, setSearchedCountry] = useState("");
   const [region, setRegion] = useState("");
@@ -41,6 +44,10 @@ export default function Home() {
     fetchCountries();
   }, [searchedCountry, region]);
 
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+
   return (
     <>
       <Head>
@@ -50,7 +57,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main
+        className={`${
+          theme
+            ? "bg-vdark-blue-dam text-white"
+            : "bg-white text-vdark-blue-lgm"
+        }`}
+      >
         <SearchFilter
           country={searchedCountry}
           setCountry={setSearchedCountry}
@@ -58,21 +71,25 @@ export default function Home() {
           setRegion={setRegion}
         />
 
-        <div>
+        <div className="w-full h-full">
           {isLoading ? (
             <Loading />
           ) : (
-            <div className="h-full grid grid-cols-4 gap-16 1bp:gap-5 2bp:grid-cols-3 3bp:grid-cols-2 mx-auto 5bp:grid-cols-1 justify-items-center">
-              {data?.map((country: any) => (
-                <CountryCard
-                  key={country.name.common}
-                  flag_image={country.flags.svg}
-                  name={country.name.common}
-                  population={country.population}
-                  region={country.region}
-                  capital={country.capital}
-                />
-              ))}
+            <div>
+              {data && (
+                <div className="relative h-full grid grid-cols-4 gap-16 1bp:gap-5 2bp:grid-cols-3 3bp:grid-cols-2 mx-auto 5bp:grid-cols-1 justify-items-center">
+                  {data?.map((country: any) => (
+                    <CountryCard
+                      key={country.name.common}
+                      flag_image={country.flags.svg}
+                      name={country.name.common}
+                      population={country.population}
+                      region={country.region}
+                      capital={country.capital}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
