@@ -15,7 +15,7 @@ export default function Layout({ children, btnClicked }: any) {
 
   return (
     <div
-      className={`h-[100vh] bottom-0 ${nunito_sans.className} ${
+      className={`min-h-[100vh] h-max bottom-0 ${nunito_sans.className} ${
         theme ? "bg-vdark-blue-dam text-white" : "bg-white text-vdark-blue-lgm"
       }`}
     >
