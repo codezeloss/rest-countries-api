@@ -28,9 +28,9 @@ const CountryCard = ({
           theme ? "bg-dark-blue" : "bg-white"
         } ${!theme ? "text-vdark-blue-lgm" : "text-white"}`}
       >
-        <div className="w-[267px] h-[160px] 3bp:w-full rounded-tr-md rounded-tl-md">
+        <div className="w-[267px] h-[160px] 3bp:w-full rounded-tr-md rounded-tl-md ">
           <Image
-            className="w-fit h-[160px] object-cover rounded-tr-md rounded-tl-md"
+            className="w-[267px] h-[160px] object-cover rounded-tr-md rounded-tl-md"
             src={flag_image ? flag_image : placeholderImage}
             alt={name ? name : "Country flag"}
             width={267}
