@@ -38,15 +38,11 @@ export default function Home() {
         setData(countriesData);
       }
 
-      setLoading(false);
+      // setLoading(false);
     }
 
     fetchCountries();
   }, [searchedCountry, region]);
-
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
 
   return (
     <>
