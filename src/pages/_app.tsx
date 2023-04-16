@@ -1,8 +1,7 @@
 import type { AppProps } from "next/app";
 import { createContext, useState } from "react";
 import "@/styles/globals.css";
-import Layout from "@/Components/Layout";
-
+import AppLayout from "@/Components/AppLayout";
 export const ThemeContext = createContext(false);
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -14,9 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <Layout setTheme={setTheme} btnClicked={toggleTheme}>
+      <AppLayout setTheme={setTheme} btnClicked={toggleTheme}>
         <Component {...pageProps} />
-      </Layout>
+      </AppLayout>
     </ThemeContext.Provider>
   );
 }
