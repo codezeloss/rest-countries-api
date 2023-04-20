@@ -55,7 +55,7 @@ const Post = () => {
         countryData[0].borders !== "" ? countryData[0]?.borders : "N/A";
       setBorders(borders);
 
-      //setLoading(false);
+      setLoading(false);
     }
 
     fetchCountries();
